@@ -2,11 +2,8 @@ import streamlit as st
 import torch
 import torch.nn as nn
 import numpy as np
-import pandas as pd
-from sklearn.preprocessing import StandardScaler
 import joblib
 import plotly.graph_objects as go
-import plotly.express as px
 
 # Page configuration
 st.set_page_config(
@@ -63,9 +60,9 @@ def main():
     if model is None:
         st.info("📋 **To use this app, you need to save your model and scaler:**")
         st.code("""
-# After training, add these lines to save your model:
-torch.save(model.state_dict(), 'wind_power_model.pth')
-joblib.dump(scaler, 'scaler.pkl')
+    # After training, add these lines to save your model:
+      torch.save(model.state_dict(), 'wind_power_model.pth')
+      joblib.dump(scaler, 'scaler.pkl')
         """, language='python')
         return
     
@@ -207,7 +204,7 @@ joblib.dump(scaler, 'scaler.pkl')
                     label="Daily Output (Est.)",
                     value=f"{daily_output:.1f} kWh"
                 )
-        
+
         # Visualization
         st.markdown("---")
         st.subheader("📊 Input Parameters Visualization")
